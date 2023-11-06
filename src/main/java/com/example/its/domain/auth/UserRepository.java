@@ -1,5 +1,6 @@
 package com.example.its.domain.auth;
 
+import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -13,4 +14,7 @@ public interface UserRepository {
 
     @Select("SELECT * FROM users")
     List<User> findAll();
+
+    @Insert("INSERT INTO users (username, password) VALUES (#{username}, #{password})")
+    void insert(String username, String password);
 }
