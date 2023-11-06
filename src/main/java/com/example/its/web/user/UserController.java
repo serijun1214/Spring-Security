@@ -22,4 +22,9 @@ public class UserController {
         return "users/list";
     }
 
+    @GetMapping("/creationForm")
+    public String showCreationForm() {
+        return "users/creationForm";
+    }
+
 }
