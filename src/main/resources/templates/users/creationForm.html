@@ -12,29 +12,33 @@
     <label for="userInput" class="form-label">ユーザー名</label>
     <input type="text" id="userInput" class="form-control" th:field="*{username}"
     th:classappend="${#fields.hasErrors('username')}? 'is-invalid'">
-    <p class="invalid-feedback" th:classappend="${#fields.hasErrors('username')}? 'is-invalid'" th:errors="*{username}">(error)</p>
+    <p class="invalid-feedback" th:classappend="${#fields.hasErrors('username')}" th:errors="*{username}">(error)</p>
   </div>
   <div class="mt-3">
     <label for="passwordInput" class="form-label">パスワード</label>
     <input type="password" name="password" id="passwordInput" class="form-control" th:field="*{password}"
            th:classappend="${#fields.hasErrors('password')}? 'is-invalid'">
-    <p class="invalid-feedback" th:classappend="${#fields.hasErrors('password')}? 'is-invalid'" th:errors="*{password}">(error)</p>
+    <p class="invalid-feedback" th:classappend="${#fields.hasErrors('password')}" th:errors="*{password}">(error)</p>
   </div>
   <div class="mt-3">
     <label class="form-label" for="authorityRadio">権限</label>
     <div id="authorityRadio">
       <div>
-        <div class="form-check">
-          <input class ="form-check-input" type="radio" id="authorityAdminRadio" th:field="*{authority}" value="ADMIN">
+        <div class="form-check" th:classappend="${#fields.hasErrors('authority')}? 'is-invalid'">
+          <input class ="form-check-input" type="radio" id="authorityAdminRadio" th:field="*{authority}" value="ADMIN"
+                 th:classappend="${#fields.hasErrors('authority')}? 'is-invalid'">
             <label class="form-check-label" for="authorityAdminRadio">ADMIN</label>
         </div>
-        <div class="form-check">
-          <input class ="form-check-input" type="radio" id="authorityUserRadio" th:field="*{authority}" value="USER">
+        <div class="form-check" th:classappend="${#fields.hasErrors('authority')}? 'is-invalid'">
+          <input class ="form-check-input" type="radio" id="authorityUserRadio" th:field="*{authority}" value="USER"
+                 th:classappend="${#fields.hasErrors('authority')}? 'is-invalid'">
             <label class="form-check-label" for="authorityUserRadio">USER</label>
         </div>
+        <p class="invalid-feedback" th:classappend="${#fields.hasErrors('authority')}" th:errors="*{authority}">(error)</p>
       </div>
     </div>
   </div>
+
   <div class="mt-3">
     <button type="submit" class="btn btn-primary">作成</button>
     <a href="./list.html" th:href="@{/users}" class="btn btn-secondary">キャンセル</a>
